@@ -24,6 +24,7 @@ public class CriacaoContasStepConfig {
 			ItemWriter<Conta> impressaoContaWriter) {
 		return stepBuilderFactory
 				.get("criacaoContasStep")
+				//o chunk é um insert por transação
 				.<Cliente, Conta>chunk(100)
 				.reader(leituraClientesReader)
 				.processor(geracaoContaProcessor)

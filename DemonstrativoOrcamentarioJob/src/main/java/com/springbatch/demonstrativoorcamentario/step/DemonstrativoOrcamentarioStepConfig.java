@@ -25,7 +25,8 @@ public class DemonstrativoOrcamentarioStepConfig {
 			ItemWriter<GrupoLancamento> demonstrativoOrcamentarioWriter, DemonstrativoOrcamentarioRodape rodapeCallback) {
 		return stepBuilderFactory
 				.get("demonstrativoOrcamentarioStep")
-				.<GrupoLancamento,GrupoLancamento>chunk(100)
+				//O spring vai conferir depois do chunk se o limite foi alcançado
+				.<GrupoLancamento,GrupoLancamento>chunk(1)
 				.reader(demonstrativoOrcamentarioReader)
 				.writer(demonstrativoOrcamentarioWriter)
 				.listener(rodapeCallback)
